@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aktualny czas</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="navbar">
+    <a href="index.html" class="back-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Wróć
+    </a>
+    <div class="title">mDowód</div>
+    <a href="#" class="help-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M20.94 11A8.94 8.94 0 1112 3a8.94 8.94 0 018.94 8z" />
+        </svg>
+    </a>
+</div>
+  <div id="czas" class="czas"></div>
+  <style>
+    .czas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #555;
+}
+
+#czas {
+  font-size: 24px;
+  font-weight: bold;
+}
+body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f7fa;
+        }
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #ffffff;
+            padding: 10px 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .navbar .back-btn {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #1a73e8;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        .navbar .back-btn svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+        .navbar .title {
+            font-weight: bold;
+            font-size: 18px;
+            color: #000;
+        }
+        .navbar .help-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f5f7fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 50%;
+            text-decoration: none;
+            color: #555;
+        }
+  </style>
+  <script>
+    function aktualizujCzas() {
+  const teraz = new Date();
+  const godzina = teraz.getHours().toString().padStart(2, '0');
+  const minuta = teraz.getMinutes().toString().padStart(2, '0');
+  const sekunda = teraz.getSeconds().toString().padStart(2, '0');
+  const dzien = teraz.getDate().toString().padStart(2, '0');
+  const miesiac = (teraz.getMonth() + 1).toString().padStart(2, '0');
+  const rok = teraz.getFullYear();
+
+  document.getElementById('czas').textContent = `Czas: ${godzina}:${minuta}:${sekunda} ${dzien}.${miesiac}.${rok}`;
+}
+
+// Uruchomienie aktualizacji czasu co sekundę
+setInterval(aktualizujCzas, 1000);
+
+// Wywołanie funkcji od razu po załadowaniu
+aktualizujCzas();
+
+
+  </script>
+</body>
+</html>
